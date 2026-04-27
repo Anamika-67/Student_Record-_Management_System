@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>SRMS</title>
+
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin:0;
+    font-family:'Poppins', sans-serif;
+    background:#eef1f7;
+}
+
+/* TOPBAR */
+.topbar {
+    height:60px;
+    background: linear-gradient(to right,#6a1b9a,#8e24aa);
+    color:white;
+    display:flex;
+    justify-content: space-between;
+    align-items:center;
+    padding:0 20px;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width:240px;
+    height:100vh;
+    background:#7b1fa2;
+    position:fixed;
+    color:white;
+}
+
+.sidebar h2 {
+    text-align:center;
+    padding:20px 0;
+}
+
+.sidebar a {
+    display:block;
+    padding:12px 20px;
+    color:white;
+    text-decoration:none;
+}
+
+.sidebar a:hover {
+    background:#9c27b0;
+}
+
+/* MAIN */
+.main {
+    margin-left:240px;
+    padding:25px;
+}
+
+/* CARDS */
+.cards {
+    display:flex;
+    gap:20px;
+    margin-top:20px;
+}
+
+.card {
+    flex:1;
+    background:white;
+    padding:30px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 5px 15px rgba(0,0,0,0.1);
+    cursor:pointer;
+}
+
+/* TABLE */
+.table-box {
+    background:white;
+    padding:20px;
+    margin-top:20px;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+}
+
+table {
+    width:100%;
+    border-collapse:collapse;
+}
+
+th {
+    background:#7b1fa2;
+    color:white;
+}
+
+th, td {
+    padding:10px;
+    border-bottom:1px solid #ddd;
+    text-align:center;
+}
+
+/* BUTTONS */
+.btn {
+    padding:5px 10px;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+.view { background:green; }
+.edit { background:orange; }
+.delete { background:red; }
+
+/* FORM */
+.form-box {
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 5px 10px rgba(0,0,0,0.1);
+    width:500px;
+}
+
+input, select {
+    width:100%;
+    padding:10px;
+    margin:10px 0;
+}
+
+/* REGISTER GRID */
+.reg-form {
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+/* HIDE */
+.page { display:none; }
+
+/* Registration Page */
+.reg-page {
+    background:#f5f5f5;
+}
+
+/* Banner with Oxford Image */
+.reg-banner {
+    background:
+    linear-gradient(to right, rgba(106,27,154,0.8), rgba(106,27,154,0.4)),
+    url('c:\Users\tmbun\Downloads\147953e6-e033-4952-9c19-713cee415e73.png'); 
+    url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Radcliffe_Camera%2C_Oxford_-_Oct_2006.jpg');
+
+    background-size:cover;
+    background-position:center;
+    color:white;
+    padding:120px 50px;
+    position:relative;
+}
+
+/* Curve */
+.reg-banner::after {
+    content:"";
+    position:absolute;
+    bottom:-40px;
+    left:0;
+    width:100%;
+    height:80px;
+    background:#f5f5f5;
+    border-top-left-radius:100% 50px;
+    border-top-right-radius:100% 50px;
+}
+
+.reg-container {
+    text-align:center;
+    margin-top:80px;
+}
+.line {
+    width:200px;
+    height:3px;
+    background:orange;
+    margin:10px auto 30px;
+}
+
+/* Center Content */
+.reg-container {
+    text-align: center;
+    margin-top: 80px;
+}
+
+/* Orange line */
+.line {
+    width: 200px;
+    height: 3px;
+    background: orange;
+    margin: 10px auto 30px;
+}
+
+/* Form grid */
+.reg-form2 {
+    display: grid;
+    grid-template-columns: repeat(2, 300px);
+    gap: 15px;
+    justify-content: center;
+}
+
+.reg-form2 input {
+    padding: 10px;
+}
+
+/* Button */
+.reg-form2 button {
+    grid-column: span 2;
+    padding: 12px;
+    background: #007bff;
+    color: white;
+    border: none;
+}
+</style>
+</head>
+
+<body>
+
+<!-- TOP -->
+<div class="topbar">
+    <div><b>SRMS</b></div>
+    <div>Welcome admin | <span id="date"></span></div>
+</div>
+
+<!-- SIDEBAR -->
+<div class="sidebar">
+    <h2>SRMS</h2>
+    <a onclick="show('dashboard')">Dashboard</a>
+    <a onclick="show('students')">Manage Students</a>
+    <a onclick="show('add')">Add Student</a>
+    <a onclick="show('register')">Registration</a>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+    <!-- DASHBOARD -->
+    <div id="dashboard" class="page">
+        <h2>Dashboard</h2>
+
+        <div class="cards">
+            <div class="card">👥 Students</div>
+            <div class="card">➕ Add Student</div>
+            <div class="card">⏻ Logout</div>
+        </div>
+    </div>
+
+    <!-- STUDENTS -->
+    <div id="students" class="page">
+        <h2>Students</h2>
+
+        <div class="table-box">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Gender</th>
+                    <th>Year</th>
+                    <th>Phone</th>
+                    <th>Action</th>
+                </tr>
+                <tr>
+                    <td>MS17-4317</td>
+                    <td>Christine Grey</td>
+                    <td>Female</td>
+                    <td>2017</td>
+                    <td>080546827</td>
+                    <td>
+                        <button class="btn view">View</button>
+                        <button class="btn edit">Edit</button>
+                        <button class="btn delete">Delete</button>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- ADD -->
+    <div id="add" class="page">
+        <h2>Add Student</h2>
+
+        <div class="form-box">
+            <input placeholder="Student ID">
+            <input placeholder="First Name">
+            <input placeholder="Last Name">
+            <select><option>Gender</option></select>
+            <input type="date">
+            <input placeholder="Year">
+            <input placeholder="Phone">
+            <button class="btn view">Submit</button>
+        </div>
+    </div>
+    
+
+    <!-- REGISTER -->
+    <div id="register" class="page reg-page">
+
+    <!-- Banner -->
+    <div class="reg-banner">
+        <h1>Student Registration</h1>
+        <p>Home - Student Registration</p>
+    </div>
+
+    <!-- Form -->
+    <div class="reg-container">
+        <h2>Registration</h2>
+        <div class="line"></div>
+
+        <form class="reg-form2">
+            <input placeholder="Enter Your Name">
+            <input placeholder="Enter Your Email">
+
+            <input placeholder="Enter Phone Number">
+            <input placeholder="Enter Register No">
+
+            <input placeholder="Course">
+            <input placeholder="Programme">
+
+            <input placeholder="Year">
+            <input placeholder="Batch">
+
+            <input placeholder="Username">
+            <input type="password" placeholder="Password">
+
+            <button>Register</button>
+        </form>
+    </div>
+
+</div>
+</div>
+
+</div>
+
+<script>
+function show(id){
+    document.querySelectorAll('.page').forEach(p=>p.style.display='none');
+    document.getElementById(id).style.display='block';
+}
+show('dashboard');
+
+document.getElementById("date").innerHTML = new Date().toDateString();
+
+function logout() {
+    alert("Logged Out Successfully");
+    show('dashboard'); // ya login page dikha sakte ho baad me
+}
+</script>
+
+</body>
+</html>
