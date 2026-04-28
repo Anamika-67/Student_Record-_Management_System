@@ -12,6 +12,25 @@ body {
     font-family:'Poppins', sans-serif;
     background:#eef1f7;
 }
+.cards {
+    display: flex;
+    gap: 20px;
+}
+
+.card {
+    padding: 20px;
+    background: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    flex: 1;
+}
+
+.card:hover {
+    background: #2980b9;
+}
 
 /* TOPBAR */
 .topbar {
@@ -142,9 +161,9 @@ input, select {
 /* Banner with Oxford Image */
 .reg-banner {
     background:
-    linear-gradient(to right, rgba(106,27,154,0.8), rgba(106,27,154,0.4)),
-    url('c:\Users\tmbun\Downloads\147953e6-e033-4952-9c19-713cee415e73.png'); 
-    url('https://upload.wikimedia.org/wikipedia/commons/7/7e/Radcliffe_Camera%2C_Oxford_-_Oct_2006.jpg');
+    linear-gradient(to right,  rgba(106,27,154,0.4)),
+    url('ox.png'); 
+    
 
     background-size:cover;
     background-position:center;
@@ -237,12 +256,11 @@ input, select {
     <!-- DASHBOARD -->
     <div id="dashboard" class="page">
         <h2>Dashboard</h2>
-
-        <div class="cards">
-            <div class="card">👥 Students</div>
-            <div class="card">➕ Add Student</div>
-            <div class="card">⏻ Logout</div>
-        </div>
+<div class="cards">
+    <a href="students.php" class="card">👥 Students</a>
+    <a href="add-student.php" class="card">➕ Add Student</a>
+    <a href="logout.php" class="card">⏻ Logout</a>
+</div>
     </div>
 
     <!-- STUDENTS -->
@@ -311,13 +329,9 @@ input, select {
             <input placeholder="Enter Your Email">
 
             <input placeholder="Enter Phone Number">
-            <input placeholder="Enter Register No">
 
             <input placeholder="Course">
             <input placeholder="Programme">
-
-            <input placeholder="Year">
-            <input placeholder="Batch">
 
             <input placeholder="Username">
             <input type="password" placeholder="Password">
